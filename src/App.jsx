@@ -1,13 +1,16 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import Login from './components/Login'
+
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <div className="App">
-      <h1>Challenge de alkemy en proceso</h1>
+    <div>
+        
+        <div className="App">
+          <h1>Challenge de alkemy en proceso</h1>
+        </div>
+        <Login></Login>
     </div>
   )
 }
