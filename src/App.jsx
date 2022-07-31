@@ -1,17 +1,20 @@
 import { useState } from 'react'
 import Login from './components/Login'
-
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import Listado from './components/Listado'
 
 function App() {
 
   return (
-    <div>
-        
-        <div className="App">
-          <h1>Challenge de alkemy en proceso</h1>
-        </div>
-        <Login></Login>
-    </div>
+    <>
+      <BrowserRouter>
+        <Routes>
+            <Route exact path='/' element={<Login />} />
+            <Route path='/listado' element={<Listado />} />
+        </Routes>
+   
+      </BrowserRouter>
+    </>
   )
 }
 

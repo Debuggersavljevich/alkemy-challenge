@@ -1,10 +1,13 @@
 import React from 'react'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
+
 
 const Login = () => {
     
-
+    let navigate = useNavigate();
     
 
     const MySwal = withReactContent(Swal)
@@ -44,19 +47,25 @@ const Login = () => {
             return
         }
 
-        if(email !== 'sbogosavljevich@gmail.com' || password !== 'react'){
+        if(email !== 'challenge@alkemy.org' || password !== 'react'){
             Swal.fire({
                 icon: 'error',
                 title: 'Credenciales inválidas...',
                 text: 'Something went wrong!',
               })    
-        } else {
-            Swal.fire({
-                icon: 'success',
-                title: 'Credenciales válidas...',
-                text: 'nothing went wrong!',
-              }) 
-        }
+        } 
+
+        axios.post('http://challenge-react.alkemy.org', {email, password})
+             .then(res =>{
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Credenciales válidas...',
+                    text: 'nothing went wrong!',
+                  })    
+                 const tokenRecibido = res.data.token;
+                 localStorage.setItem('token', tokenRecibido);
+                    navigate('/listado')
+             })
     }
    
   return (
